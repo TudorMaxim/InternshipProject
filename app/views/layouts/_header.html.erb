@@ -1,13 +1,27 @@
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
     <%= link_to "Rock, Papers, Scissors", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path, id: "bar_item" %></li>
-        <li><%= link_to "Help", help_path, id: "bar_item" %></li>
-        <li><%= link_to "Log in", new_user_session_path, id: "bar_item" %></li>
 
-      </ul>
-    </nav>
+    <% if !user_signed_in? %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", root_path, id: "bar_item" %></li>
+          <li><%= link_to "Help", help_path, id: "bar_item" %></li>
+          <li><%= link_to "Log in", new_user_session_path, id: "bar_item" %></li>
+        </ul>
+      </nav>
+
+    <% else %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Profile", root_path, id: "bar_item" %> </li>
+          <li> <%= link_to "Messages", "#", id: "bar_item" %> </li>
+          <li> <%= link_to "Notifications", "#", id: "bar_item" %> </li>
+          <li><%= link_to "Friends", "#", id: "bar_item" %></li>
+          <li><%= link_to "Settings", edit_user_registration_path, id: "bar_item" %></li>
+          <li> <%= link_to "Log Out", destroy_user_session_path, id: "bar_item", method: :delete %> </li>
+        </ul>
+      </nav>
+    <% end -%>
   </div>
 </header>
