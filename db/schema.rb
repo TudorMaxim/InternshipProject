@@ -29,12 +29,11 @@ ActiveRecord::Schema.define(version: 2018_07_03_185251) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
     t.string "last_name"
     t.integer "victories", default: 0
     t.boolean "admin", default: false
     t.boolean "banned", default: false
-
+    t.string "first_name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
