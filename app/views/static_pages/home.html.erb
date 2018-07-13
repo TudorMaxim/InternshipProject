@@ -6,7 +6,6 @@
   </div>
 <% else %>
   <div class="container">
-    <p> <%= "#{current_user.first_name}" %> </p>
-
+    <h1> <%= current_user.full_name %> </h1>
   </div>
 <% end -%>
