@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 
 # Use ActiveStorage variant
+gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
