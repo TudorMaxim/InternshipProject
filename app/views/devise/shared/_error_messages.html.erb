@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger col-md-4 col-md-offset-4">
+      The form contains <%= pluralize(resource.errors.count, "error") %>:
+    </div>
+    <% resource.errors.full_messages.each do |msg| %>
+        <li class="alert alert-danger col-md-4 col-md-offset-4"><%= msg %></li>
+    <% end %>
+  </div>
+<% end %>

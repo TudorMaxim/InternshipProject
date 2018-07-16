@@ -17,8 +17,12 @@
   <body>
     <%= render "layouts/header" %>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert" ><%= alert %></p>
+      <% if !notice.nil? %>
+        <p class="notice alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if !alert.nil? %>
+        <p class="alert alert-danger" ><%= alert %></p>
+      <% end %>
 
       <%= yield %>
     </div>
