@@ -14,11 +14,11 @@
     <% else %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Profile", root_path, id: "bar_item" %> </li>
+          <li> <%= link_to "Profile", root_path, id: "bar_item" %> </li>
           <li> <%= link_to "Messages", "#", id: "bar_item" %> </li>
           <li> <%= link_to "Notifications", "#", id: "bar_item" %> </li>
-          <li><%= link_to "Friends", "#", id: "bar_item" %></li>
-          <li><%= link_to "Settings", edit_user_registration_path, id: "bar_item" %></li>
+          <li> <%= link_to "Friends", "#", id: "bar_item" %></li>
+          <li> <%= link_to "Settings", edit_user_registration_path, id: "bar_item" %></li>
           <li> <%= link_to "Log Out", destroy_user_session_path, id: "bar_item", method: :delete %> </li>
         </ul>
       </nav>
