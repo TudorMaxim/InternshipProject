@@ -18,3 +18,9 @@
     </section>
   </aside>
 </div>
+
+<% if @user != current_user %>
+  <%= link_to "Add Friend", "friend_requests_path( user_id: @user,
+                                                  friend_id: current_user),"
+                                                  method: :post,  class: "btn btn-primary" %>
+<% end %>
