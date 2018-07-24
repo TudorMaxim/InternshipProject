@@ -14,13 +14,15 @@
 
   <aside class="col-md-4">
     <section class="user_info">
-      <h1> Status: <%= current_user.victories%> <%= "victory".pluralize(current_user.victories) %> </h1>
+      <h1> Status: <%= current_user.victories %> <%= "victory".pluralize(current_user.victories) %> </h1>
     </section>
   </aside>
 </div>
 
-<% if @user != current_user %>
-  <%= link_to "Add Friend", "friend_requests_path( user_id: @user,
-                                                  friend_id: current_user),"
-                                                  method: :post,  class: "btn btn-primary" %>
+<% if @user != current_user && !current_user.friend_with?(@user) %>
+  <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "btn btn-primary" %>
+
+<% elsif @user != current_user && current_user.friend_with?(@user) %>
+  <%= link_to "Unfriend", current_user.find_any_friendship_with(@user), :method => :delete, class: "btn btn-primary" %>
+
 <% end %>

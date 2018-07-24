@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/contact', to: 'static_pages#contact'
   get '/about', to: 'static_pages#about'
-
-  get 'friends/', to: "friends#index"
+  get '/friends', to: "friendships#index"
 
   resources :users
   resources :friendships

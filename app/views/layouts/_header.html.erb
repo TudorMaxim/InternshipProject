@@ -14,10 +14,20 @@
     <% else %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li> <%= link_to "Profile", root_path, id: "bar_item" %> </li>
-          <li> <%= link_to "Messages", "#", id: "bar_item" %> </li>
+          <li> <%= link_to "Profile", current_user, id: "bar_item" %> </li>
           <li> <%= link_to "Notifications", "#", id: "bar_item" %> </li>
-          <li> <%= link_to "Friends", "#", id: "bar_item" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Social <b class="caret" id="bar_item"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li> <%= link_to "Friends", friends_path, id: "bar_item" %></li>
+              <li> <%= link_to "Messages", "#", id: "bar_item" %> </li>
+              <li class="divider"></li> 
+              <li> <%= link_to "Everybody", users_path, id: "bar_item" %></li>
+            </ul>
+          </li>
+
           <li> <%= link_to "Settings", edit_user_registration_path, id: "bar_item" %></li>
           <li> <%= link_to "Log Out", destroy_user_session_path, id: "bar_item", method: :delete %> </li>
         </ul>
