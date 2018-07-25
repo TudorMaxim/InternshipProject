@@ -1,0 +1,29 @@
+<% provide(:title, 'Notifications') %>
+<% if @notifications.empty? %>
+  <h1>You have no notifications!</h1>
+<% else %>
+  <h1>Notifications</h1>
+  <div class="text-center">
+    <%= will_paginate @notifications %>
+  </div>
+  <ul class="users">
+    <% @notifications.unread.each do |n| %>
+      <li>
+        <%= gravatar_for n.actor, size: 50 %>
+        <%= link_to n.actor.full_name, n.actor %> <%= n.action %>.
+        <% if n.action == "sent you a friend request" %>
+          <%= link_to "Accept", friendship_path(id: n.notifiable_id), method: :patch, class: "btn btn-primary" %>
+          <%= link_to "Decline", friendship_path(id: n.notifiable_id), method: :delete, class: "btn btn-primary" %>
+        <% elsif n.action == "accepted your friend request" %>
+          <% n.read %>
+        <% end %>
+        <br />
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="text-center">
+    <%= will_paginate @notifications %>
+  </div>
+
+<% end %>

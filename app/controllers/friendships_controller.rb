@@ -1,20 +1,33 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
+  include FriendshipsHelper
+  
   def create
     if current_user.invite(User.find(params[:friend_id]))
       flash[:notice] = "Friend request succesfully sent"
       redirect_to root_url
     else
-      flash[:notice] = "Unable to send friend request"
+      flash[:danger] = "Unable to send friend request"
+      redirect_to root_url
+    end
+  end
+
+  def update
+    @friendship = find_friendship(params[:id])
+    if current_user.accept(User.find_by(id: @friendship.user_id))
+      flash[:notice] = "Friend request succesfully accepted"
+      redirect_to root_url
+    else
+      flash[:danger] = "Unable to accept friend request"
       redirect_to root_url
     end
   end
 
   def destroy
-    @friendship = current_user.friendships.find_by(id: params[:id])
-    if @friendship.nil?
-      @friendship = current_user.inverse_friendships.find_by(id: params[:id])
-    end
+    @friendship = find_friendship(params[:id])
+    Notification.find_by(notifiable_id: @friendship.id, notifiable: @friendship).read
     @friendship.destroy
+
     flash[:notice] = "You are no longer friends"
     redirect_to current_user
   end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+  get 'notification/index'
   devise_for :users
   get 'static_pages/home'
   get 'static_pages/help'
@@ -13,5 +15,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :friendships
+  resources :notifications
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

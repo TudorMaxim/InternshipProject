@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
 
+  has_many :notifications, foreign_key: :recipient_id
+
   has_many :friendships
 
   has_many :requested_friends,
@@ -32,6 +34,7 @@ class User < ApplicationRecord
             :source => :user
 
 
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -40,12 +43,16 @@ class User < ApplicationRecord
     return false if other_user == self || find_any_friendship_with(other_user)
     f = self.friendships.build(friend_id: other_user.id)
     f.save
+    Notification.create(recipient: other_user, actor: self, action: "sent you a friend request", notifiable: f)
   end
 
   def accept(other_user)
     f = find_any_friendship_with(other_user)
     return false if f.nil? || invited?(other_user)
+
     f.update_attributes(status: "accepted", accepted_at: Time.now)
+    Notification.find_by(recipient: self, actor: other_user, action: "sent you a friend request", notifiable: f).read
+    Notification.create(recipient: other_user, actor: self, action: "accepted your friend request", notifiable: f)
   end
 
   def unfriend(other_user)
