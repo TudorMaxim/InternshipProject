@@ -26,3 +26,10 @@ User.create!(first_name:  "Tudor",
                password_confirmation: password,
                confirmed_at: DateTime.now)
 end
+
+a = User.first
+(3..65).to_a.each do |i|
+  b = User.find_by(id: i)
+  b.invite a
+  a.accept b
+end

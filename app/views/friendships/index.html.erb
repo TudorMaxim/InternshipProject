@@ -6,10 +6,11 @@
   </div>
   <ul class="users">
       <% @my_friends.each do |u| %>
-      <li>
-        <%= gravatar_for u, size: 50 %>
-        <%= link_to u.full_name, u %> <br />
-      </li>
+        <li>
+          <%= gravatar_for u, size: 50 %>
+          <%= link_to u.full_name, u %>
+          <%= link_to "Challenge", "#", class: "btn btn-primary"%> <br />
+        </li>
       <% end %>
   </ul>
   <div class="text-center">

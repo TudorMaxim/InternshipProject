@@ -2,10 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # attr_accessor :first_name, :last_name, :admin, :banned, :victories, :email
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length: { maximum: 255 },
+            format: {with: VALID_EMAIL_REGEX}
 
   has_many :notifications, foreign_key: :recipient_id
 

@@ -1,13 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  sender_id: 1
-  receiver_id: 1
-  status: 1
-  accepted_at: 2018-07-17 17:01:08
-
-two:
-  sender_id: 1
-  receiver_id: 1
-  status: 1
-  accepted_at: 2018-07-17 17:01:08
