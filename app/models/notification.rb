@@ -8,5 +8,5 @@ class Notification < ApplicationRecord
   def read
     self.update_attributes(read_at: Time.now)
   end
-  
+
 end
