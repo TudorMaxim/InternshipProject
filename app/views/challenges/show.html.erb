@@ -1,0 +1,14 @@
+<div class="players">
+  <div>
+    <%= gravatar_for @me %>
+    <h4> <%=@me.full_name%></h4>
+  </div>
+  <div>
+    <h1> VS </h1>
+  </div>
+  <div>
+    <%=gravatar_for @enemy %>
+    <h4><%=@enemy.full_name%></h4>
+  </div>
+
+</div>

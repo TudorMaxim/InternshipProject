@@ -5,11 +5,12 @@
     <%= will_paginate @my_friends %>
   </div>
   <ul class="users">
-      <% @my_friends.each do |u| %>
+      <% @my_friends.each do |friend| %>
         <li>
-          <%= gravatar_for u, size: 50 %>
-          <%= link_to u.full_name, u %>
-          <%= link_to "Challenge", "#", class: "btn btn-primary"%> <br />
+          <%= gravatar_for friend, size: 50 %>
+          <%= link_to friend.full_name, friend %>
+          <%= link_to "Challenge", challenges_path( sender_id: current_user.id, 
+                                                    receiver_id: friend.id), method: :post, class: "btn btn-primary" %> <br />
         </li>
       <% end %>
   </ul>

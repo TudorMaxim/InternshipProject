@@ -53,7 +53,8 @@ class User < ApplicationRecord
     return false if other_user == self || find_any_friendship_with(other_user)
     f = self.friendships.build(friend_id: other_user.id)
     f.save
-    Notification.create(recipient: other_user, actor: self, action: "sent you a friend request", notifiable: f)
+    Notification.create(recipient: other_user, actor: self, action: "sent you a friend request!", notifiable: f)
+    return true
   end
 
   def accept(other_user)
@@ -61,8 +62,9 @@ class User < ApplicationRecord
     return false if f.nil? || invited?(other_user)
 
     f.update_attributes(status: "accepted", accepted_at: Time.now)
-    Notification.find_by(recipient: self, actor: other_user, action: "sent you a friend request", notifiable: f).read
-    Notification.create(recipient: other_user, actor: self, action: "accepted your friend request", notifiable: f)
+    Notification.find_by(recipient: self, actor: other_user, action: "sent you a friend request!", notifiable: f).read
+    Notification.create(recipient: other_user, actor: self, action: "accepted your friend request!", notifiable: f)
+    return true
   end
 
   def unfriend(other_user)
@@ -103,10 +105,11 @@ class User < ApplicationRecord
 
 
   def challenge(other_user)
-    return false if other_user == self
+    return false if other_user == self || find_any_game_with(other_user)
     c = self.challenges.build(receiver_id: other_user.id)
     c.save
     Notification.create(recipient: other_user, actor: self, action: "challenged you!", notifiable: c)
+    return true
   end
 
   def accept_challenge(other_user)
@@ -115,6 +118,7 @@ class User < ApplicationRecord
     c.update_attributes(status: "accepted")
     Notification.find_by(recipient: self, actor: other_user, action: "challenged you!", notifiable: c).read
     Notification.create(recipient: other_user, actor: self, action: "accepted your challenge!", notifiable: c)
+    return true
   end
 
   def decline_challenge(other_user)
@@ -129,10 +133,6 @@ class User < ApplicationRecord
     arr = self.challenges.played + self.inverse_challenges.played
     arr.sort! { |l, r| l.finished_at <=> r.finished_at }
     return arr
-  end
-
-  def win_challenge_with(other_user)
-    #function which updates the winner_id
   end
 
   def challenged?(other_user)

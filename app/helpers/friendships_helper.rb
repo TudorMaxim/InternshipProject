@@ -1,5 +1,5 @@
 module FriendshipsHelper
-  
+
   def find_friendship(friendship_id)
     f = current_user.friendships.find_by(id: friendship_id)
     if f.nil?
