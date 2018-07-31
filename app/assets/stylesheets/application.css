@@ -12,9 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
  /* User sign in and sign forms. */
+ @import 'bootstrap/glyphicons';
+
 .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;
