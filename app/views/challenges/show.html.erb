@@ -1,28 +1,34 @@
 <div class="players">
   <div>
-    <%= gravatar_for @me %>
-    <h4> <%=@me.full_name%></h4>
+      <%= gravatar_for @me %>
+      <h4> <%=@me.full_name%></h4>
   </div>
   <div>
     <h1> VS </h1>
   </div>
   <div>
     <%=gravatar_for @enemy %>
-    <h4><%=@enemy.full_name%></h4>
+    <h4> <%=@enemy.full_name%></h4>
   </div>
 </div>
 
-<div class="choices">
+<% if @challenge.sender_choice.nil? || @challenge.receiver_choice.nil? %>
+  <div class="choices">
+    <%= link_to '<i class="fa fa-hand-rock-o"></i>  Rock'.html_safe, challenge_path(@challenge), method: :patch,
+                                                          class: "btn btn-primary btn-lg", id: "rock-button" %>
+    <%= link_to '<i class="fa fa-hand-paper-o"></i>  Paper'.html_safe, challenge_path(@challenge), method: :patch,
+                                                          class: "btn btn-primary btn-lg", id: "paper-button" %>
+    <%= link_to '<i class="fa fa-hand-scissors-o"></i>  Scissors'.html_safe, challenge_path(@challenge), method: :patch,
+                                                          class: "btn btn-primary btn-lg", id: "scissors-button" %>
+  </div>
 
-  <button type="button" class="btn btn-primary btn-lg">
-    <span class="fa fa-hand-rock-o"></span>  Rock
-  </button>
+<% elsif @challenge.winner_id == current_user.id %>
+  <h1><span class="label label-success">YOU WON!</span></h1>
 
-  <button type="button" class="btn btn-primary btn-lg">
-    <span class="fa fa-hand-paper-o"></span>  Paper
-  </button>
+<% elsif @challenge.winner_id == @enemy.id %>
+  <h1><span class="label label-danger">YOU LOST!</span></h1>
 
-  <button type="button" class="btn btn-primary btn-lg">
-    <span class="fa fa-hand-scissors-o"></span>  Scissors
-  </button>
-</div>
+<% elsif @challenge.sender_choice == @challenge.receiver_choice%>
+  <h1><span class="label label-warning">DRAW!</span></h1>
+
+<% end %>

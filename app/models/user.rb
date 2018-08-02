@@ -114,7 +114,7 @@ class User < ApplicationRecord
 
   def accept_challenge(other_user)
     c = find_any_game_with(other_user)
-    return false if c.nil? || challenged?(other_user)
+    return false if c.nil? || challenged?(other_user) || c.status == "accepted"
     c.update_attributes(status: "accepted")
     Notification.find_by(recipient: self, actor: other_user, action: "challenged you!", notifiable: c).read
     Notification.create(recipient: other_user, actor: self, action: "accepted your challenge!", notifiable: c)

@@ -5,7 +5,7 @@ class ChallengesController < ApplicationController
 
   def create
     u = User.find_by(id: params[:receiver_id])
-    #
+
     if current_user.challenge(u)
       flash[:notice] = "You have succesfully challenged " + u.full_name + "!"
       redirect_to root_url
@@ -24,8 +24,16 @@ class ChallengesController < ApplicationController
       flash[:notice] = "Challenge accepted! Good luck!"
       redirect_to challenge_url(@challenge)
     else
-      flash[:danger] = "Unable to accept the challenge from " + u.full_name + "!"
-      redirect_to root_url
+      respond_to do |format|
+        format.html {
+          flash[:danger] = "Unable to accept friend request from " + u.full_name + "!"
+          redirect_to root_url
+        }
+        format.js { 'alert("it is javascript");'}
+        format.json {
+          @challenge.make_choice(current_user, params[:choice])
+        }
+      end
     end
   end
 
@@ -49,6 +57,11 @@ class ChallengesController < ApplicationController
       @enemy = User.find_by(id: @challenge.receiver_id)
     else
       @enemy = User.find_by(id: @challenge.sender_id)
+    end
+    respond_to do |format|
+      format.js
+      format.html
+      format.json
     end
   end
 

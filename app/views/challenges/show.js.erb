@@ -1,0 +1,18 @@
+$(document).ready(function() {
+
+  $("#rock-button").click(function() {
+    $.ajax({
+      type: "POST"
+      url: <%= challenge_path(@challenge) %>
+    });
+  });
+
+  $("#paper-button").click(function() {
+
+  });
+
+  $("#scissors-button").click(function() {
+
+  });
+
+});
