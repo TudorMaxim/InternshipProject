@@ -1,0 +1,49 @@
+<% if @challenge.status != "finished" && @choices[@me].nil? %>
+  <button class="btn btn-primary btn-lg" id="rock-button" href="<%=challenge_path(@challenge)%>">
+    <span class="fa fa-hand-rock-o"></span> Rock
+  </button>
+
+  <button class="btn btn-primary btn-lg" id="paper-button" href="<%=challenge_path(@challenge)%>">
+    <span class="fa fa-hand-paper-o"></span> Paper
+  </button>
+
+  <button class="btn btn-primary btn-lg" id="scissors-button" href="<%=challenge_path(@challenge)%>">
+    <span class="fa fa-hand-scissors-o"></span> Scissors
+  </button>
+<% elsif  @challenge.status != "finished" && @choices[@me] == "rock" %>
+  <button class="btn btn-primary btn-lg" id="rock-button" href="<%=challenge_path(@challenge)%>">
+    <span class="fa fa-hand-rock-o"></span> Rock
+  </button>
+
+  <button class="btn btn-primary btn-lg" id="paper-button" href="<%=challenge_path(@challenge)%>" disabled>
+    <span class="fa fa-hand-paper-o"></span> Paper
+  </button>
+
+  <button class="btn btn-primary btn-lg" id="scissors-button" href="<%=challenge_path(@challenge)%>" disabled>
+    <span class="fa fa-hand-scissors-o"></span> Scissors
+  </button>
+  <% elsif  @challenge.status != "finished" && @choices[@me] == "paper" %>
+    <button class="btn btn-primary btn-lg" id="rock-button" href="<%=challenge_path(@challenge)%>" disabled>
+      <span class="fa fa-hand-rock-o"></span> Rock
+    </button>
+
+    <button class="btn btn-primary btn-lg" id="paper-button" href="<%=challenge_path(@challenge)%>">
+      <span class="fa fa-hand-paper-o"></span> Paper
+    </button>
+
+    <button class="btn btn-primary btn-lg" id="scissors-button" href="<%=challenge_path(@challenge)%>" disabled>
+      <span class="fa fa-hand-scissors-o"></span> Scissors
+    </button>
+  <% elsif  @challenge.status != "finished" && @choices[@me] == "scissors" %>
+    <button class="btn btn-primary btn-lg" id="rock-button" href="<%=challenge_path(@challenge)%>" disabled>
+      <span class="fa fa-hand-rock-o"></span> Rock
+    </button>
+
+    <button class="btn btn-primary btn-lg" id="paper-button" href="<%=challenge_path(@challenge)%>" disabled>
+      <span class="fa fa-hand-paper-o"></span> Paper
+    </button>
+
+    <button class="btn btn-primary btn-lg" id="scissors-button" href="<%=challenge_path(@challenge)%>">
+      <span class="fa fa-hand-scissors-o"></span> Scissors
+    </button>
+<% end %>

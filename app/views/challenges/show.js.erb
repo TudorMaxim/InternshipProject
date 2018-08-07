@@ -1,18 +1,3 @@
-$(document).ready(function() {
-
-  $("#rock-button").click(function() {
-    $.ajax({
-      type: "POST"
-      url: <%= challenge_path(@challenge) %>
-    });
-  });
-
-  $("#paper-button").click(function() {
-
-  });
-
-  $("#scissors-button").click(function() {
-
-  });
-
-});
+$("#result").html("<%= j render 'challenges/result' %>");
+$("#skins").html("<%= j render 'challenges/skins' %>");
+$("#choices").html("<%= j render 'challenges/choices' %>");

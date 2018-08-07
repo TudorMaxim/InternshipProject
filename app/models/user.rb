@@ -131,7 +131,7 @@ class User < ApplicationRecord
 
   def played_games
     arr = self.challenges.played + self.inverse_challenges.played
-    arr.sort! { |l, r| l.finished_at <=> r.finished_at }
+    arr.sort! { |l, r| r.finished_at <=> l.finished_at }
     return arr
   end
 
@@ -142,9 +142,9 @@ class User < ApplicationRecord
   end
 
   def find_any_game_with(other_user)
-    g = self.challenges.find_by(receiver_id: other_user.id)
+    g = self.challenges.find_by(receiver_id: other_user.id, status: "pending")
     if g.nil?
-      g = self.inverse_challenges.find_by(sender_id: other_user.id)
+      g = self.inverse_challenges.find_by(sender_id: other_user.id, status: "pending")
     end
     return g
   end

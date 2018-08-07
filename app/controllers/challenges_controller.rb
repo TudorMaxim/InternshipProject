@@ -5,11 +5,9 @@ class ChallengesController < ApplicationController
 
   def create
     u = User.find_by(id: params[:receiver_id])
-
     if current_user.challenge(u)
       flash[:notice] = "You have succesfully challenged " + u.full_name + "!"
       redirect_to root_url
-
     else
       flash[:danger] = "Unable to challenge " + u.full_name + "!"
       redirect_to root_url
@@ -19,21 +17,12 @@ class ChallengesController < ApplicationController
   def update
     @challenge = find_challenge(params[:id])
     u = User.find_by(id: @challenge.sender_id)
-
     if current_user.accept_challenge(u)
-      flash[:notice] = "Challenge accepted! Good luck!"
+      #flash[:notice] = "Challenge accepted! Good luck!"
       redirect_to challenge_url(@challenge)
     else
-      respond_to do |format|
-        format.html {
-          flash[:danger] = "Unable to accept friend request from " + u.full_name + "!"
-          redirect_to root_url
-        }
-        format.js { 'alert("it is javascript");'}
-        format.json {
-          @challenge.make_choice(current_user, params[:choice])
-        }
-      end
+      flash[:danger] = "Unable to accept friend request from " + u.full_name + "!"
+      redirect_to root_url
     end
   end
 
@@ -53,15 +42,23 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find_by(id: params[:id])
     @me = current_user
     @emeny = nil
+    if params[:choice]
+      @challenge.make_choice(current_user, params[:choice])
+    end
+    @choices = Hash.new
     if @challenge.sender_id == current_user.id
       @enemy = User.find_by(id: @challenge.receiver_id)
+      @choices[@me] = @challenge.sender_choice
+      @choices[@enemy] = @challenge.receiver_choice
     else
       @enemy = User.find_by(id: @challenge.sender_id)
+      @choices[@me] = @challenge.receiver_choice
+      @choices[@enemy] = @challenge.sender_choice
     end
+
     respond_to do |format|
-      format.js
       format.html
-      format.json
+      format.js
     end
   end
 
@@ -72,5 +69,4 @@ class ChallengesController < ApplicationController
     @receiver = User.find_by(id: @challenge.receiver_id)
     redirect_to root_url unless @sender == current_user || @receiver == current_user
   end
-
 end

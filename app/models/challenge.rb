@@ -2,23 +2,29 @@ class Challenge < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
 
-  scope :played, -> { where(status: "accepted") }
+  scope :played, -> { where(status: "finished") }
 
   def set_winner(user)
     return false if self.status == "pending" || user.nil?
     user.update_attributes(victories: user.victories + 1)
-    self.update_attributes( winner_id: user.id, finished_at: Time.now)
+    self.update_attributes(status: "finished", winner_id: user.id, finished_at: Time.now)
     return true
   end
 
   def make_choice(user, choice)
+    return false if choice.nil?
     if user.id == self.sender_id
       self.update_attributes(sender_choice: choice)
     elsif user.id == self.receiver.id
       self.update_attributes(receiver_choice: choice)
     end
     w = self.find_winner
-    self.set_winner w
+    if self.sender_choice == self.receiver_choice && !self.sender_choice.nil?
+      self.update_attributes(status: "finished", finished_at: Time.now)
+      return true
+    else
+      self.set_winner w
+    end
   end
 
   def find_winner

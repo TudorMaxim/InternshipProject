@@ -17,10 +17,17 @@
         <% elsif n.action == "accepted your friend request!" %>
           <% n.read %>
         <% elsif n.action == "challenged you!" %>
-          <%= link_to "Accept", challenge_path(id: n.notifiable_id), method: :patch, class: "btn btn-primary" %>
-          <%= link_to "Decline", challenge_path(id: n.notifiable_id), method: :delete, class: "btn btn-danger" %>
+          <div style="float:right">
+            <%= link_to "Accept", challenge_path(id: n.notifiable_id), method: :patch, class: "btn btn-primary" %>
+            <%= link_to "Decline", challenge_path(id: n.notifiable_id), method: :delete, class: "btn btn-danger" %>
+          </div>
         <% elsif n.action == "accepted your challenge!" %>
-          <%= link_to "Play", challenge_path(id: n.notifiable_id), class: "btn btn-primary" %>
+          <div style="float:right">
+            <%= link_to "Play", challenge_path(id: n.notifiable_id), class: "btn btn-primary" %>
+            <% if n.notifiable.status == "finished" %>
+              <% n.read %>
+            <% end %>
+          </div>
         <% end %>
         <br />
       </li>

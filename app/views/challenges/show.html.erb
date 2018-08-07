@@ -1,4 +1,4 @@
-<div class="players">
+<div id="players">
   <div>
       <%= gravatar_for @me %>
       <h4> <%=@me.full_name%></h4>
@@ -12,23 +12,12 @@
   </div>
 </div>
 
-<% if @challenge.sender_choice.nil? || @challenge.receiver_choice.nil? %>
-  <div class="choices">
-    <%= link_to '<i class="fa fa-hand-rock-o"></i>  Rock'.html_safe, challenge_path(@challenge), method: :patch,
-                                                          class: "btn btn-primary btn-lg", id: "rock-button" %>
-    <%= link_to '<i class="fa fa-hand-paper-o"></i>  Paper'.html_safe, challenge_path(@challenge), method: :patch,
-                                                          class: "btn btn-primary btn-lg", id: "paper-button" %>
-    <%= link_to '<i class="fa fa-hand-scissors-o"></i>  Scissors'.html_safe, challenge_path(@challenge), method: :patch,
-                                                          class: "btn btn-primary btn-lg", id: "scissors-button" %>
-  </div>
-
-<% elsif @challenge.winner_id == current_user.id %>
-  <h1><span class="label label-success">YOU WON!</span></h1>
-
-<% elsif @challenge.winner_id == @enemy.id %>
-  <h1><span class="label label-danger">YOU LOST!</span></h1>
-
-<% elsif @challenge.sender_choice == @challenge.receiver_choice%>
-  <h1><span class="label label-warning">DRAW!</span></h1>
-
-<% end %>
+<div id="result">
+  <%= render "challenges/result" %>
+</div>
+<div id="skins">
+  <%= render "challenges/skins" %>
+</div>
+<div id="choices">
+  <%= render "challenges/choices" %>
+</div>

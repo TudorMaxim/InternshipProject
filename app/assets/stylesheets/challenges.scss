@@ -2,12 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.players {
+#players {
   display: flex;
   justify-content: space-around;
 }
 
-.choices {
+#choices {
+  display: flex;
+  justify-content: space-around;
+}
+
+#skins {
   display: flex;
   justify-content: space-around;
 }
