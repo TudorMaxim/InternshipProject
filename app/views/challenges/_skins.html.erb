@@ -1,0 +1,18 @@
+<div id="my_skin">
+<% if @choices[@me] == "rock" %>
+  <h2>I chose rock!</h2>
+<% elsif @choices[@me] == "paper" %>
+  <h2>I chose paper!</h2>
+<% elsif @choices[@me] == "scissors" %>
+  <h2>I chose scissors!</h2>
+<% end %>
+</div>
+<div id="enemy_skin">
+  <% if @choices[@enemy] == "rock" && @choices[@me]%>
+    <h2>They chose rock!</h2>
+  <% elsif @choices[@enemy] == "paper" && @choices[@me]%>
+    <h2>They chose paper!</h2>
+  <% elsif @choices[@enemy] == "scissors" && @choices[@me]%>
+    <h2>They chose scissors!</h2>
+  <% end %>
+</div>

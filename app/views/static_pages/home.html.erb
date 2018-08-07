@@ -19,10 +19,79 @@
     <aside class="col-md-4"> </aside>
 
     <aside class="col-md-4">
-      <section class="user_info">
+      <section class="user_info" style="float:right">
         <h1> Status: <%= current_user.victories%> <%= "victory".pluralize(current_user.victories) %> </h1>
       </section>
     </aside>
   </div>
-
 <% end %>
+
+<h1>History</h1>
+<div class="table-responsive">
+  <table class="table" border="0">
+    <% current_user.played_games.each do |game| %>
+      <% if game.winner_id == current_user.id %>
+
+        <tr class="success">
+          <td id="winner" class="center"><h4>WIN<h4></td>
+          <td class="left">
+              <%= gravatar_for current_user, size: 50 %>
+              <%= current_user.full_name %>
+          </td>
+          <td class="center">VS</td>
+          <td class="left">
+            <% enemy_id = current_user.id == game.sender_id ? game.receiver_id : game.sender_id %>
+            <% enemy = User.find_by(id: enemy_id) %>
+            <div style="float:right">
+              <%= gravatar_for enemy, size: 50 %>
+            </div>
+            <div style="float:right">
+              <%= enemy.full_name %>
+            </div>
+          </td>
+        </tr>
+
+      <% elsif game.winner_id.nil? %>
+
+        <tr class="warning">
+          <td id="draw" class="center"><h4>DRAW<h4></td>
+          <td class="left">
+              <%= gravatar_for current_user, size: 50 %>
+              <%= current_user.full_name %>
+          </td>
+          <td class="center">VS</td>
+          <td class="left">
+            <% enemy_id = current_user.id == game.sender_id ? game.receiver_id : game.sender_id %>
+            <% enemy = User.find_by(id: enemy_id) %>
+            <div style="float:right">
+              <%= gravatar_for enemy, size: 50 %>
+            </div>
+            <div style="float:right">
+              <%= enemy.full_name %>
+            </div>
+          </td>
+        </tr>
+
+      <% else %>
+        <tr class="danger">
+          <td id="loser" class="center"><h4>LOSE<h4></td>
+          <td class="left">
+              <%= gravatar_for current_user, size: 50 %>
+              <%= current_user.full_name %>
+          </td>
+          <td class="center">VS</td>
+          <td class="left">
+            <% enemy_id = current_user.id == game.sender_id ? game.receiver_id : game.sender_id %>
+            <% enemy = User.find_by(id: enemy_id) %>
+            <div style="float:right">
+              <%= gravatar_for enemy, size: 50 %>
+            </div>
+            <div style="float:right">
+              <%= enemy.full_name %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

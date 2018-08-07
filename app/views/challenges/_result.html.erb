@@ -1,0 +1,7 @@
+<% if @challenge.winner_id == current_user.id %>
+  <h1><span class="label label-success">YOU WON!</span></h1>
+<% elsif @challenge.winner_id == @enemy.id %>
+  <h1><span class="label label-danger">YOU LOST!</span></h1>
+<% elsif @challenge.sender_choice == @challenge.receiver_choice && !@challenge.sender_choice.nil?%>
+  <h1><span class="label label-warning">DRAW!</span></h1>
+<% end %>

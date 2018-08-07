@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender_id: 1
+  receiver_id: 1
+  winner_id: 1
+  finished_at: 2018-07-29 18:22:17
+  status: MyString
+  sender_choice: MyString
+  receiver_choice: MyString
+
+two:
+  sender_id: 1
+  receiver_id: 1
+  winner_id: 1
+  finished_at: 2018-07-29 18:22:17
+  status: MyString
+  sender_choice: MyString
+  receiver_choice: MyString

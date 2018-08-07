@@ -1,0 +1,23 @@
+<div id="players">
+  <div>
+      <%= gravatar_for @me %>
+      <h4> <%=@me.full_name%></h4>
+  </div>
+  <div>
+    <h1> VS </h1>
+  </div>
+  <div>
+    <%=gravatar_for @enemy %>
+    <h4> <%=@enemy.full_name%></h4>
+  </div>
+</div>
+
+<div id="result">
+  <%= render "challenges/result" %>
+</div>
+<div id="skins">
+  <%= render "challenges/skins" %>
+</div>
+<div id="choices">
+  <%= render "challenges/choices" %>
+</div>

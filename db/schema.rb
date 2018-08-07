@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_181955) do
+ActiveRecord::Schema.define(version: 2018_07_29_152217) do
+
+  create_table "challenges", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "winner_id"
+    t.datetime "finished_at"
+    t.string "status", default: "pending"
+    t.string "sender_choice"
+    t.string "receiver_choice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
