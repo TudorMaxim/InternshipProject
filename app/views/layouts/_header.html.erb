@@ -7,26 +7,28 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home", root_path, id: "bar_item" %></li>
           <li><%= link_to "Help", help_path, id: "bar_item" %></li>
+          <li><%= link_to "Leaderboard", leaderboard_path, id: "bar_item" %></li>
           <li><%= link_to "Log in", new_user_session_path, id: "bar_item" %></li>
         </ul>
       </nav>
     <% else %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li>  <%= link_to current_user, id: "bar_item" do %>
-                  <%=gravatar_for current_user, size: 25 %>
-                  <%=current_user.first_name %>
-                <% end %>
+          <li>
+            <%= link_to current_user, id: "bar_item" do %>
+              <%= gravatar_for current_user, size: 25 %>
+              <%=current_user.first_name %>
+            <% end %>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="bar_item">
               Social <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li> <%= link_to "Friends", friends_path, id: "bar_item" %></li>
-              <li> <%= link_to "Messages", "#", id: "bar_item" %> </li>
+              <li> <%= link_to "Friends", friends_path, id: "bar_item" %> </li>
+              <li> <%= link_to "Everybody", users_path, id: "bar_item" %> </li>
               <li class="divider"></li>
-              <li> <%= link_to "Everybody", users_path, id: "bar_item" %></li>
+              <li> <%= link_to "Leaderboard", leaderboard_path, id: "bar_item" %> </li>
             </ul>
           </li>
 

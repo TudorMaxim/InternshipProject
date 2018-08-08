@@ -1,0 +1,27 @@
+// Place all the styles related to the Leaderboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#gold {
+  color: gold;
+  font-size: 1.8em;
+}
+
+#silver {
+  color: silver;
+  font-size: 1.8em;
+}
+
+#bronze {
+  color: #CD7F32;
+  font-size: 1.8em;
+}
+
+table {
+  td, th {
+    font-size: 1.3em;
+    letter-spacing: -1px;
+  }
+}
