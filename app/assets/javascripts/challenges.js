@@ -6,7 +6,6 @@ var refresher = function(time) {
       url: link,
       dataType: "script",
       success: function(data) {
-        //console.log(data)
         if (! ($("#result").is(":empty")) ) {
           clearInterval(interval);
           $("#result").hide().fadeIn(2000);
@@ -27,12 +26,14 @@ var buttonPressed = function(myChoice) {
     success: function(data) {
       $("#result").hide().fadeIn(2000);
       $("#skins").hide().fadeIn(2000);
-      refresher(2000);
+      if ( ($("#result").is(":empty")) ) {
+        refresher(2000);
+      }
     }
   });
 }
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $("#skins").hide().fadeIn(2000);
   $("#result").hide().fadeIn(2000);
   $("#choices").hide().fadeIn(2000);
