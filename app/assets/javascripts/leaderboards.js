@@ -1,4 +1,4 @@
-var buttonPressed = function(myChoice) {
+var updateLeaderboard = function(myChoice) {
   var link = window.location.href;
   $.ajax({
     type: "GET",
@@ -11,14 +11,14 @@ var buttonPressed = function(myChoice) {
 $(document).on('turbolinks:load', function() {
   $("#all_time").click(function(event) {
     event.preventDefault();
-    buttonPressed("all_time");
+    updateLeaderboard("all_time");
   });
   $("#monthly").click(function(event) {
     event.preventDefault();
-    buttonPressed("monthly");
+    updateLeaderboard("monthly");
   });
   $("#daily").click(function(event) {
     event.preventDefault();
-    buttonPressed("daily");
+    updateLeaderboard("daily");
   });
 });
