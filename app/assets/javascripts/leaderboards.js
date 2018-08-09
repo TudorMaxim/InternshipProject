@@ -4,10 +4,7 @@ var buttonPressed = function(myChoice) {
     type: "GET",
     url: link,
     dataType: "script",
-    data: { choice: myChoice},
-    success: function(data) {
-      $("#table_content").hide().fadeIn(1000);
-    }
+    data: { choice: myChoice}
   });
 }
 
