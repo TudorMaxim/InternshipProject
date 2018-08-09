@@ -135,36 +135,6 @@ class User < ApplicationRecord
     return arr
   end
 
-  def favorite_choice
-    games = self.played_games
-    rock = 0
-    paper = 0;
-    scissors = 0;
-    games.each do |game|
-      if game.sender_id == self.id
-        if game.sender_choice == "rock"
-          rock = rock + 1
-        elsif game.sender_choice == "paper"
-          paper = paper + 1
-        else
-          scissors = scissors + 1
-        end
-      else
-        if game.receiver_choice == "rock"
-          rock = rock + 1
-        elsif game.receiver_choice == "paper"
-          paper = paper + 1
-        else
-          scissors = scissors + 1
-        end
-      end
-    end
-    return "rock" if [rock, paper, scissors].max == rock
-    return "paper" if [rock, paper, scissors].max == paper
-    return "scissors"
-    
-  end
-
   def challenged?(other_user)
     c = find_any_game_with(other_user)
     return false if c.nil?

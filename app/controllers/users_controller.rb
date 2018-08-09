@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    if @user.destroy
+        redirect_to root_url, notice: "User banned successfully!"
+    end
+  end
+
   private
   def logged_in_user
     unless user_signed_in?

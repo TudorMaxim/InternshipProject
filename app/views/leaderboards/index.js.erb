@@ -1,0 +1,9 @@
+var type = "<%=@type %>";
+console.log(type);
+if (type == "daily") {
+  $("#table_content").html(" <%= j render 'leaderboards/daily' %> ");
+} else if (type == "monthly") {
+  $("#table_content").html(" <%= j render 'leaderboards/monthly' %> ");
+} else {
+  $("#table_content").html(" <%= j render 'leaderboards/all_time' %> ");
+}

@@ -60,6 +60,15 @@ aside {
   margin-top: 15px;
 }
 
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#profile_button {
+  margin-right: 50px;
+}
+
 #winner {
   background-color: #00C851;
   color: #fff;
@@ -75,6 +84,7 @@ aside {
   color: #fff;
 }
 table {
+  margin-top: 10px;
   td {
     letter-spacing: -1px;
   }

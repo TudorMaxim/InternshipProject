@@ -19,11 +19,12 @@
     <aside class="col-md-4"> </aside>
 
     <aside class="col-md-4">
-      <section class="user_info" style="float:right">
-        <h1> Status: <%= current_user.victories%> <%= "victory".pluralize(current_user.victories) %> </h1>
+      <section class="user_info">
+        <h1 style="text-align:center"> Status: <%= current_user.victories%> <%= "victory".pluralize(current_user.victories) %> </h1>
       </section>
     </aside>
   </div>
+
   <h1>History</h1>
   <div class="table-responsive">
     <table class="table" border="0">

@@ -7,7 +7,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home", root_path, id: "bar_item" %></li>
           <li><%= link_to "Help", help_path, id: "bar_item" %></li>
-          <li><%= link_to "Leaderboard", leaderboard_path, id: "bar_item" %></li>
+          <li><%= link_to "Leaderboard", leaderboard_path(choice: "all_time"), id: "bar_item" %></li>
           <li><%= link_to "Log in", new_user_session_path, id: "bar_item" %></li>
         </ul>
       </nav>
@@ -28,7 +28,7 @@
               <li> <%= link_to "Friends", friends_path, id: "bar_item" %> </li>
               <li> <%= link_to "Everybody", users_path, id: "bar_item" %> </li>
               <li class="divider"></li>
-              <li> <%= link_to "Leaderboard", leaderboard_path, id: "bar_item" %> </li>
+              <li> <%= link_to "Leaderboard", leaderboard_path(choice: "all_time"), id: "bar_item" %> </li>
             </ul>
           </li>
 

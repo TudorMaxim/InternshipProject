@@ -1,12 +1,24 @@
 class LeaderboardsController < ApplicationController
+  include LeaderboardsHelper
+
   def index
-    @best_all_time = User.all.sort { |a, b| b.victories <=> a.victories }
+    @best = nil
     @my_position = nil
-    if user_signed_in?
-      @my_position = @best_all_time.find_index(current_user)
+    @type = params[:choice]
+    @rank = 0
+
+    if params[:choice] == "all_time"
+      @best, @my_position = all_time_leaderboard()
+    elsif params[:choice] == "monthly"
+      @best, @my_position = monthly_leaderboard()
+    else
+      @best, @my_position = daily_leaderboard()
     end
-    if @best_all_time.count > 10
-      @best_all_time = @best_all_time[0..9]
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
+
 end
