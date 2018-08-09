@@ -7,12 +7,12 @@ class LeaderboardsController < ApplicationController
     @type = params[:choice]
     @rank = 0
 
-    if params[:choice] == "all_time"
-      @best, @my_position = all_time_leaderboard()
+    if params[:choice] == "daily"
+      @best, @my_position = daily_leaderboard()
     elsif params[:choice] == "monthly"
       @best, @my_position = monthly_leaderboard()
     else
-      @best, @my_position = daily_leaderboard()
+      @best, @my_position = all_time_leaderboard()
     end
 
     respond_to do |format|
