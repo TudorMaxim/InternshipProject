@@ -22,7 +22,11 @@
               <%= link_to user.full_name, user %>
             </td>
             <td> <%= user.victories %> </td>
-            <td> unknown </td>
+            <td>
+              <% fav = user.favorite_choice %>
+              <i class="fa fa-hand-<%=fav%>-o"></i>
+              <%= fav %>
+             </td>
             <% if rank == 1 %>
               <td> <i class="fa fa-trophy" id="gold"></i> </td>
             <% elsif rank == 2 %>
@@ -41,7 +45,11 @@
               <%= link_to user.full_name, user %>
             </td>
             <td> <%= user.victories %> </td>
-            <td> unknown </td>
+            <td>
+              <% fav = user.favorite_choice %>
+              <i class="fa fa-hand-<%=fav%>-o"></i>
+              <%= fav %>
+            </td>
             <% if rank == 1 %>
               <td> <i class="fa fa-trophy" id="gold"></i> </td>
             <% elsif rank == 2 %>
@@ -64,7 +72,11 @@
             <%= link_to current_user.full_name, current_user %>
           </td>
           <td> <%= current_user.victories %> </td>
-          <td> unknown </td>
+          <td>
+            <% fav = current_user.favorite_choice %>
+            <i class="fa fa-hand-<%=fav%>-o"></i>
+            <%= fav %>
+          </td>
           <td> </td>
       <% end %>
     </tbody>
