@@ -21,7 +21,7 @@ class ChallengesController < ApplicationController
       #flash[:notice] = "Challenge accepted! Good luck!"
       redirect_to challenge_url(@challenge)
     else
-      flash[:danger] = "Unable to accept friend request from " + u.full_name + "!"
+      flash[:danger] = "Unable to accept challenge from " + u.full_name + "!"
       redirect_to root_url
     end
   end
