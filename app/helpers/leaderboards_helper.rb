@@ -47,7 +47,7 @@ module LeaderboardsHelper
 
   def daily_victories(user)
     games = user.played_games.select {|game| game.finished_at > 1.day.ago }
-    games = user.played_games.select {|game| game.finished_at > 1.day.ago }
+    games = user.played_games.where() {|game| game.finished_at > 1.day.ago }
     return get_victories(user, games)
   end
 
