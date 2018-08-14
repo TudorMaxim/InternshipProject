@@ -1,26 +1,20 @@
 <% provide(:title, 'My Friends') %>
 <% if !@my_friends.empty? %>
   <h1>My Friends</h1>
-  <div class="text-center">
-    <%= will_paginate @my_friends %>
-  </div>
-  <ul class="users">
-      <% @my_friends.each do |friend| %>
-        <li>
-          <div style="float:left">
-            <%= gravatar_for friend, size: 50 %>
-            <%= link_to friend.full_name, friend %>
-          </div>
-          <div style="float:right">
-          <%= link_to "Challenge", challenges_path( sender_id: current_user.id,
-                                                    receiver_id: friend.id), method: :post, class: "btn btn-primary" %> <br />
-          </div>
-        </li>
+
+  <div style="float:right">
+    <%= form_tag friendships_path, method: 'get', remote: true do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= button_tag type: "submit", class: "btn btn-default btn-sm" do %>
+         <span class="fa fa-search"></span>
       <% end %>
-  </ul>
-  <div class="text-center">
-    <%= will_paginate @my_friends %>
+    <% end %>
   </div>
+
+  <div id="my_friends">
+    <%= render "friendships/friends" %>
+  </div>
+
 <% else %>
   <h1>You have currently no friends, you lonely wolf</h1>
 <% end %>

@@ -45,6 +45,19 @@ class User < ApplicationRecord
            through: :inverse_challenges, source: :sender
 
 
+  def self.search(what)
+    if what
+      self.where("first_name LIKE ? OR last_name LIKE ?", "%#{what}%", "%#{what}%")
+    else
+      all
+    end
+  end
+
+
+  def friends_filtered(what)
+    return self.friends.select {|f| (f.first_name.downcase[what.downcase] || f.last_name.downcase[what.downcase]) }
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
