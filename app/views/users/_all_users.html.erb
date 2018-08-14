@@ -1,0 +1,22 @@
+<ul class="users">
+  <% @users.each do |u| %>
+  <li>
+    <div style="float:left">
+      <%= gravatar_for u, size: 50 %>
+      <%= link_to u.full_name, u %>
+    </div>
+    <div style="float:right">
+      <% if u != current_user && !current_user.friend_with?(u) %>
+        <%= link_to "Add Friend", friendships_path(:friend_id => u), :method => :post, class: "btn btn-primary" %>
+      <% elsif u != current_user && current_user.friend_with?(u) %>
+        <%= link_to "Unfriend", current_user.find_any_friendship_with(u), :method => :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <br />
+  </li>
+  <% end %>
+</ul>
+
+<div class="text-center">
+  <%= will_paginate @users %>
+</div>

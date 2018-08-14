@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   include FriendshipsHelper
-  
+
   def create
     if current_user.invite(User.find(params[:friend_id]))
       flash[:notice] = "Friend request succesfully sent"
@@ -33,7 +33,16 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    @my_friends = current_user.friends.paginate(page: params[:page])
+    @my_friends = nil
+    if params[:search].nil?
+      @my_friends = current_user.friends.paginate(page: params[:page])
+    else
+      @my_friends = current_user.friends_filtered(params[:search]).paginate(page: params[:page])
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 end

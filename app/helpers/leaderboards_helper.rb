@@ -42,12 +42,13 @@ module LeaderboardsHelper
 
   def monthly_victories(user)
     games = user.played_games.select {|game| game.finished_at > 1.month.ago }
+    #games = user.played_games.where('finished_at > ?', 1.month.ago)
     return get_victories(user, games)
   end
 
   def daily_victories(user)
     games = user.played_games.select {|game| game.finished_at > 1.day.ago }
-    games = user.played_games.where() {|game| game.finished_at > 1.day.ago }
+    #games = user.played_games.where() {|game| game.finished_at > 1.day.ago }
     return get_victories(user, games)
   end
 
@@ -94,6 +95,6 @@ module LeaderboardsHelper
   end
 
   def get_victories(user, games)
-    return games.where() {|game| game.winner_id == user.id}.count
+    return games.select {|game| game.winner_id == user.id}.count
   end
 end

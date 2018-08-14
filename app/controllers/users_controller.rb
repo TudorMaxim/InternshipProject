@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.search(params[:search]).paginate(page: params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def destroy
