@@ -13,6 +13,17 @@
       </nav>
     <% else %>
       <nav>
+        <%= form_tag request.fullpath, method: "get", id: "my_search", class: "navbar-form navbar-left", remote: true do %>
+          <div class="input-group">
+            <%= search_field_tag :search, params[:search], placeholder: "Search somebody", class: "form-control" %>
+            <div class="input-group-btn">
+              <%= button_tag type: "submit", class: "btn btn-default" do %>
+                 <span class="fa fa-search"></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
         <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to current_user, id: "bar_item" do %>

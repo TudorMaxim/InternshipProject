@@ -16,3 +16,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+  if (window.location.pathname != "/users" && window.location.pathname != "/friends") {
+    $("#my_search").removeAttr("data-remote");
+    $("#my_search").attr("action", "/users");
+  }
+});

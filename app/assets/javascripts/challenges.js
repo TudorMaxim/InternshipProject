@@ -39,7 +39,6 @@ $(document).on('turbolinks:load', function() {
   $("#skins").hide().fadeIn(2000);
   $("#result").hide().fadeIn(2000);
   $("#choices").hide().fadeIn(2000);
-  console.log("hello");
   $("#rock-button").click(function(event) {
     document.getElementById("paper-button").disabled = true;
     document.getElementById("scissors-button").disabled = true;
