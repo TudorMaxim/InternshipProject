@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :friendships
-  resources :notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   resources :challenges
 
 end

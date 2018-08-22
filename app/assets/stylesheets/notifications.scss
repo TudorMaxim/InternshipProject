@@ -1,3 +1,46 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$gray-medium-light: #eaeaea;
+$pale-sky: #6b717f;
+
+ul {
+  .notifications {
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    li {
+      overflow: auto;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $gray-lighter;
+      width: 100%;
+    }
+    a.dropdown-item {
+      padding: 0 250px;
+      text-align: center;
+    }
+    a.btn-xs {
+      margin-right: 10px;
+    }
+    min-width: 600px;
+    max-height: 400px;
+    overflow: scroll;
+
+  }
+}
+#notifications_dropdown {
+  color: black;
+  &:hover {
+    color: $pale-sky;
+  }
+  .badge {
+    background-color: red;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+}
