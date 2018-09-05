@@ -6,16 +6,10 @@ class NotificationsController < ApplicationController
   end
 
   def mark_as_read
-    if params[:id]
-      @notfification.find_by(id: params[:id])
-      @notfification.read
-      render json: @notification
-    else
-      @notifications = Notification.where(recipient: current_user, action: "accepted your friend request").unread
-      @notifications.update_all(read_at: Time.now)
-      @unreadNotifications = Notification.where(recipient: current_user).unread
-      render json: @unreadNotifications
-    end
+    @notifications = Notification.where(recipient: current_user, action: "accepted your friend request!").unread
+    @notifications.update_all(read_at: Time.now)
+    @notifications = Notification.where(recipient: current_user).unread.newest
+    render "index"
   end
 
 end

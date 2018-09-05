@@ -28,7 +28,7 @@ class ChallengesController < ApplicationController
 
   def destroy
     @challenge = find_challenge(params[:id])
-    Notification.find_by(notifiable_id: @challenge.id, notifiable: @challenge).read
+    Notification.find_by(notifiable_id: @challenge.id, notifiable: @challenge, action: "challenged you!").read
     @challenge.destroy
     flash[:notice] = "Challenge declined!"
     redirect_to root_url
@@ -40,6 +40,7 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find_by(id: params[:id])
+    Notification.find_by(notifiable_id: @challenge.id, notifiable: @challenge, action: "accepted your challenge!").read
     @me = current_user
     @emeny = nil
     if params[:choice]
