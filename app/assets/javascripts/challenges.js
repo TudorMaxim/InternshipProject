@@ -29,7 +29,7 @@ var buttonPressed = function(myChoice) {
       $("#result").hide().fadeIn(2000);
       $("#skins").hide().fadeIn(2000);
       if ( ($("#result").is(":empty")) ) {
-        refresher(2000);
+        refresher(500);
       }
     }
   });
