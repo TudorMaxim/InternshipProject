@@ -27,6 +27,10 @@ class Challenge < ApplicationRecord
     end
   end
 
+  def finished?
+    return self.status == 'finished'
+  end
+
   def find_winner
     return nil if self.sender_choice.nil? || self.receiver_choice.nil? || self.sender_choice == self.receiver_choice
     return User.find_by(id: self.sender_id) if self.sender_choice == "rock" && self.receiver_choice == "scissors"

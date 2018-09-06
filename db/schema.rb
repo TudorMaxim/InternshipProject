@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_152217) do
+ActiveRecord::Schema.define(version: 2018_09_05_095411) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer "sender_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 2018_07_29_152217) do
     t.string "action"
     t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skins", force: :cascade do |t|
+    t.string "name"
+    t.string "skin_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

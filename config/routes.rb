@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
   end
   resources :challenges
+  resources :skins
 
 end

@@ -1,0 +1,5 @@
+<h1> Skins </h1>
+<% @skins.each do |s| %>
+  <%= image_tag(s.name, size: "200x200", alt: s.skin_type) %>
+  <h3> <%= s.name.humanize %> </h3>
+<% end %>

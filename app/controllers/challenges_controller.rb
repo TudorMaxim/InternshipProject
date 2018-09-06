@@ -40,7 +40,10 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find_by(id: params[:id])
-    Notification.find_by(notifiable_id: @challenge.id, notifiable: @challenge, action: "accepted your challenge!").read
+    notification = Notification.find_by(action: "accepted your challenge!", notifiable: @challenge)
+    if notification.recipient == current_user
+      Notification.find_by(action: "accepted your challenge!", notifiable: @challenge).read
+    end
     @me = current_user
     @emeny = nil
     if params[:choice]
