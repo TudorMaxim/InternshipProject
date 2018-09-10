@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '3.3.7'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'bootstrap-glyphicons', '~> 0.0.1'
 gem "font-awesome-rails"
+gem 'stripe'
 gem 'jquery-rails', '4.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
