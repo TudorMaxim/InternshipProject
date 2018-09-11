@@ -80,6 +80,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    climate_control (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -174,6 +175,12 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    paperclip (6.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     pg (0.18.4)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -250,6 +257,8 @@ GEM
       net-ssh (>= 2.8.0)
     stripe (3.26.0)
       faraday (~> 0.10)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -298,6 +307,7 @@ DEPENDENCIES
   mini_racer
   minitest (= 5.10.3)
   minitest-reporters (= 1.1.14)
+  paperclip (~> 6.0.0)
   pg (~> 0.18.4)
   pry
   puma (~> 3.11)

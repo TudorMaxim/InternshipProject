@@ -1,0 +1,7 @@
+var type = "<%=@type %>";
+console.log(type);
+if (type == "all") {
+  $("#skins_table_content").html(" <%= j render 'skins/all_skins' %> ");
+} else {
+  $("#skins_table_content").html(" <%= j render 'skins/filtered_skins' %> ");
+}

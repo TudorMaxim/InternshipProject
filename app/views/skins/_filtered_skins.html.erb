@@ -1,0 +1,12 @@
+<% @skins.each do |s| %>
+  <% if s.skin_type == @type %>
+    <tr>
+      <td> <%= image_tag s.image.url(:thumb) %> </td>
+      <td> <h3> <%= s.name.humanize %> </h3> </td>
+      <td> <%= s.price %> $ </td>
+      <td>
+        <%= link_to "Buy now!", "#", class: "btn btn-primary btn-xs", id: "add_skin_button" %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

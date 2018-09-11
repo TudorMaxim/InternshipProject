@@ -3,6 +3,8 @@ class Challenge < ApplicationRecord
   belongs_to :receiver, class_name: 'User'
 
   scope :played, -> { where(status: "finished") }
+  scope :monthly, -> { where('finished_at > ?', 1.month.ago) }
+  scope :daily, -> { where('finished_at > ?', 1.day.ago) }
 
   def set_winner(user)
     return false if self.status == "pending" || user.nil?

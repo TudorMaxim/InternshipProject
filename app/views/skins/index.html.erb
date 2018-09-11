@@ -1,5 +1,37 @@
 <h1> Skins </h1>
-<% @skins.each do |s| %>
-  <%= image_tag(s.name, size: "100x100", alt: s.skin_type) %>
-  <h3> <%= s.name.humanize.sub!("-", " ") %> </h3>
-<% end %>
+
+<div class="table-responsive", id="skins_shop">
+  <table class="table">
+    <caption>
+      <div class="btn-group">
+        <button type="button" id="all-skins" class="btn btn-default">
+          All
+        </button>
+        <button type="button" id="rock-skins" class="btn btn-default">
+          Rock
+        </button>
+        <button type="button" id="paper-skins" class="btn btn-default">
+          Paper
+        </button>
+        <button type="button" id="scissors-skins" class="btn btn-default">
+          Scissors
+        </button>
+      </div>
+
+      <% if current_user.admin? %>
+        <%= render 'add_skin_option' %>
+      <% end %>
+
+    </caption>
+    <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody id="skins_table_content">
+      <%= render 'all_skins' %>
+    </tbody>
+
+  </table>
+</div>

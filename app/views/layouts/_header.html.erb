@@ -31,11 +31,9 @@
               <%=current_user.first_name %>
             <% end %>
           </li>
-          <li>
-            <%= link_to "Shop", skins_path, id: "bar_item" %>
-          </li>
+          <li> <%= link_to "Shop", skins_path, id: "bar_item" %> </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="bar_item">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="bar_item" aria-haspopup="true" aria-expanded="false">
               Social <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">

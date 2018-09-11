@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_095411) do
+ActiveRecord::Schema.define(version: 2018_09_11_124020) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer "sender_id"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 2018_09_05_095411) do
     t.string "skin_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
