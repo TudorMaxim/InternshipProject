@@ -4,7 +4,8 @@ var updateSkinsView = function(myChoice) {
     type: "GET",
     url: link,
     dataType: "script",
-    data: { choice: myChoice }
+    data: { choice: myChoice,
+            page: 1 }
   });
 }
 

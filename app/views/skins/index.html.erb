@@ -2,8 +2,8 @@
 
 <div class="table-responsive", id="skins_shop">
   <table class="table">
-    <caption>
-      <div class="btn-group">
+    <caption class="row">
+      <div class="btn-group col-md-4">
         <button type="button" id="all-skins" class="btn btn-default">
           All
         </button>
@@ -18,10 +18,15 @@
         </button>
       </div>
 
-      <% if current_user.admin? %>
-        <%= render 'add_skin_option' %>
-      <% end %>
+      <div class="col-md-4" data-behavior="pagination">
+        <%= will_paginate @skins %>
+      </div>
 
+      <div class="col-md-4">
+        <% if current_user.admin? %>
+          <%= render 'add_skin_option' %>
+        <% end %>
+      </div>
     </caption>
     <thead>
       <th></th>
