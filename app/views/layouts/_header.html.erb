@@ -44,7 +44,6 @@
             </ul>
           </li>
 
-          <!-- <li> <%= link_to '<i class="glyphicon glyphicon-globe"></i>'.html_safe, notifications_path, id: "bar_item" %> </li> -->
 
           <li class="nav-item btn-group" data-behavior="notifications">
             <a class="dropdown-toggle nav-link" type="button" id="notifications_dropdown" data-behavior="notifications-link"
@@ -53,6 +52,17 @@
               <span class="badge" data-behavior="notifications_count"></span>
             </a>
             <ul class="dropdown-menu notifications" aria-labelledby="notifications_dropdown" data-behavior="notification_items">
+
+            </ul>
+          </li>
+
+          <li class="nav-item btn-group" data-behavior="messages">
+            <a class="dropdown-toggle nav-link" type="button" id="messages_dropdown" data-behavior="messages-link"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="glyphicon glyphicon-comment"></i>
+              <span class="badge" data-behavior="messages_count"></span>
+            </a>
+            <ul class="dropdown-menu messages" aria-labelledby="messages_dropdown" data-behavior="message_items">
 
             </ul>
           </li>
