@@ -13,6 +13,9 @@ class User < ApplicationRecord
 
   has_many :notifications, foreign_key: :recipient_id
 
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
+
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
@@ -160,5 +163,17 @@ class User < ApplicationRecord
       g = self.inverse_challenges.find_by(sender_id: other_user.id, status: "pending")
     end
     return g
+  end
+
+  def all_conversations
+    Conversation.where("user_id = ? OR friend_id = ? ", self.id, self.id).order(updated_at: :desc)
+  end
+
+  def find_any_conversation_with(other_user)
+    c = self.conversations.find_by(friend_id: other_user.id)
+    if c.nil?
+      c = self.inverse_conversations.find_by(user_id: other_user.id)
+    end
+    return c
   end
 end

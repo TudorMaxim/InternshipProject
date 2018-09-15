@@ -16,6 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require cable
 
 $(document).on("turbolinks:load", function() {
   if (window.location.pathname != "/users" && window.location.pathname != "/friends") {

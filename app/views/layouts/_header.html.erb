@@ -56,15 +56,8 @@
             </ul>
           </li>
 
-          <li class="nav-item btn-group" data-behavior="messages">
-            <a class="dropdown-toggle nav-link" type="button" id="messages_dropdown" data-behavior="messages-link"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <i class="glyphicon glyphicon-comment"></i>
-              <span class="badge" data-behavior="messages_count"></span>
-            </a>
-            <ul class="dropdown-menu messages" aria-labelledby="messages_dropdown" data-behavior="message_items">
-
-            </ul>
+          <li id="messages">
+            <%= link_to '<i class="glyphicon glyphicon-comment" id="messages_count"></i>'.html_safe, conversations_path, id: 'bar_item' %>
           </li>
 
           <li> <%= link_to '<i class="glyphicon glyphicon-cog"></i>'.html_safe, edit_user_registration_path, id: "bar_item" %></li>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'charges/new'
+
   get 'charges/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
@@ -20,5 +20,12 @@ Rails.application.routes.draw do
   resources :challenges
   resources :skins
   resources :charges
+  resources :conversations do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
+  mount ActionCable.server => '/cable'
 
 end

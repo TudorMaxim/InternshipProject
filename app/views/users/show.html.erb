@@ -13,7 +13,9 @@
 
   <aside class="col-md-4">
     <section class="user_info">
-      <h1 style="text-align:center"> Status: <%= current_user.victories %> <%= "victory".pluralize(current_user.victories) %> </h1>
+      <div style= "float:right">
+        <h1 style="text-align:center"> Status: <%= current_user.victories %> <%= "victory".pluralize(current_user.victories) %> </h1>
+      </div>
     </section>
   </aside>
 </div>
@@ -24,6 +26,15 @@
                               method: :post, class: "btn btn-primary", id:"profile_button" %>
 
   <% elsif @user != current_user && current_user.friend_with?(@user) %>
+    <% conversation = current_user.find_any_conversation_with(@user) %>
+    <% if conversation.nil? %>
+      <%= link_to "Send message", conversations_path( title: @user.full_name,
+                                                      friend_id: @user.id), method: :post,
+                                                      class: "btn btn-primary", id: "profile_button" %>
+    <% else %>
+      <%= link_to "Send message",  conversation, class: "btn btn-primary", id: "profile_button" %>
+    <% end %>
+
     <%= link_to "Challenge", challenges_path( sender_id: current_user.id, receiver_id: @user.id),
                                             method: :post, class: "btn btn-primary", id: "profile_button" %>
 
@@ -31,7 +42,9 @@
                             method: :delete, class: "btn btn-primary", id: "profile_button" %>
   <% end %>
   <% if current_user.admin && @user != current_user %>
-    <%= link_to "Ban", @user, method: :delete, class: "btn btn-danger", data: { confirm: "You sure?" } %>
+    <div style="float:right">
+      <%= link_to "Ban", @user, method: :delete, class: "btn btn-danger", data: { confirm: "You sure?" } %>
+    </div>
   <% end %>
 </div>
 
