@@ -5,10 +5,17 @@ class SkinsController < ApplicationController
     @skin = Skin.create(skin_params)
     if @skin.save
       flash[:notice] = "New skin successfully added!"
+      redirect_to skins_path
     else
       flash[:danger] = "Invalid skin!"
     end
-    redirect_to skins_path
+    respond_to do |format|
+      format.js
+      format.html {
+        flash[:danger] = "Invalid skin!"
+        redirect_to root_path
+       }
+    end
   end
 
   def index

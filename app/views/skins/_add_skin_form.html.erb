@@ -1,15 +1,7 @@
-<%= form_for @skin,  html: { multipart: true } do |f| %>
+<%= form_for @skin,  id: "add_skin_form", remote: true, html: { multipart: true } do |f| %>
 
-  <% if @skin.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@skin.errors.count, "error") %> prohibited this skin from being saved:</h3>
-      <ul>
-      <% @skin.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li> <br/>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div id="skin_error_explanation">
+  </div>
 
   <div class="form-group">
     <%= f.label :name, class: 'control-label' %><br>
@@ -36,7 +28,7 @@
   </div>
 
   <div class="actions" style="text-align:center">
-    <%= f.submit 'Submit', class: 'btn btn-success'%>
+    <%= f.submit 'Add skin', class: 'btn btn-success'%>
   </div>
 
 <% end %>

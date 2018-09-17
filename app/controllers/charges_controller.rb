@@ -1,26 +1,29 @@
 class ChargesController < ApplicationController
-  def new
-  end
 
   def create
     # Amount in cents
-    binding.pry
-    @amount = params[:amount]
-
+    @skin = Skin.find_by(id: params[:skin_id])
+    @amount = @skin.price.to_i * 100
+    # Get the credit card details submitted by the form
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+        :email => params[:email],
+        :source  => params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+    begin
+      Stripe::Charge.create(
+          :amount => @amount,
+          :currency => 'usd',
+          :customer => customer.id,
+          :description => "#{customer.email} bought #{@skin.name}"
+      )
+      flash[:notice] = "#{@skin.name} succesfully bought"
+      #current_user.skins << @skin
+      redirect_to root_path
 
-    rescue Stripe::CardError => e
+      rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to new_charge_path
+      redirect_to root_path
+    end
   end
 end

@@ -26,4 +26,15 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     updateSkinsView("scissors");
   });
+
+  $("#add_skin_button").click(function() {
+    $("#skin_name").val('');
+    $("#skin_skin_type").val('');
+    $("#skin_price").val('');
+    $("#skin_image").val('');
+  });
+  $("[data-behavior='close_add_skin_modal']").click(function() {
+    $("#skin_error_explanation").html("");
+  });
+
 });

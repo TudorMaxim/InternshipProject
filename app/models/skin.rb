@@ -4,5 +4,7 @@ class Skin < ApplicationRecord
   validates :name, presence: true
   validates :skin_type, presence: true
   validates :price, presence: true
+  validates :image, presence: true
+  belongs_to :user
 
 end
