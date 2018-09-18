@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'charges/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   root 'static_pages#home'
@@ -9,6 +7,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/friends', to: "friendships#index"
   get '/leaderboard', to: "leaderboards#index"
+  get "/inventory", to: "bought_skins#index"
+  get 'charges/create'
 
   resources :users
   resources :friendships
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :challenges
   resources :skins
   resources :charges
+  resources :bought_skins, only: [:create]
+
   resources :conversations do
     member do
       post :close

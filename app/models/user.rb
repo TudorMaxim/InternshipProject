@@ -12,6 +12,9 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX}
 
   has_many :notifications, foreign_key: :recipient_id
+  has_many :bought_skins, class_name: "BoughtSkin"
+
+  has_many :selected_bought_skins, -> { where bought_skins: { selected: true } }, class_name: "BoughtSkin"
 
   has_many :messages
   has_many :conversations, foreign_key: :sender_id

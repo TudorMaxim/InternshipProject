@@ -19,8 +19,14 @@ class ChargesController < ApplicationController
           :description => "#{customer.email} bought #{@skin.name}"
       )
       flash[:notice] = "#{@skin.name} succesfully bought"
-      #current_user.skins << @skin
-      #redirect_to root_path
+
+      BoughtSkin.create(user_id: current_user.id,
+                        name: @skin.name,
+                        skin_type: @skin.skin_type,
+                        selected: false,
+                        image: @skin.image)
+
+      redirect_to inventory_path
 
       rescue Stripe::CardError => e
       flash[:danger] = e.message

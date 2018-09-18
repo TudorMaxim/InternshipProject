@@ -1,0 +1,9 @@
+<% @skins.each do |s| %>
+  <tr>
+    <td> <%= image_tag s.image.url(:thumb) %> </td>
+    <td> <h3> <%= s.name.humanize %> </h3> </td>
+    <td>
+      <%= check_box_tag "name", "value", s.selected == true , class: "checkbox", data: {behavior: "checkbox"} %>
+    </td>
+  </tr>
+<% end %>

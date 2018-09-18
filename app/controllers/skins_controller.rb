@@ -21,13 +21,10 @@ class SkinsController < ApplicationController
   def index
     @skin = Skin.new
     @skins = nil
-    @type = nil
     if params[:choice]
       @skins = Skin.where(skin_type: params[:choice]).paginate(page: params[:page], per_page: 6)
-      @type = params[:choice]
     else
       @skins = Skin.paginate(page: params[:page], per_page: 6)
-      @type = "all"
     end
     respond_to do |format|
       format.html

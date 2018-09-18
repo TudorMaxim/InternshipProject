@@ -5,7 +5,9 @@
     <td> <%= s.price %> $ </td>
     <td>
       <div style="float:right">
-        <% if s.price > 0 %>
+        <% if owned_skin(s) %>
+          <h3><span class="label label-success"> Owned </span></h3>
+        <% elsif !free_skin(s) %>
           <%= form_tag charges_path(skin_id: s.id) do %>
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -16,8 +18,9 @@
                     data-label="Buy now!">
             </script>
           <% end %>
+        <% else  %>
+          <%= link_to "Get it now!", bought_skins_path(skin_id: s.id), method: :post, class: "btn btn-default" %>
         <% end %>
-
       </div>
     </td>
   </tr>

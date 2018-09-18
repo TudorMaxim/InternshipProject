@@ -1,0 +1,49 @@
+<h1>Inventory</h1>
+
+<!-- <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Selected Skins</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="selected_skins">
+
+    </ul>
+  </div>
+</div> -->
+
+<div class="table-responsive" id="skins_inventory">
+  <table class="table">
+    <caption class="row">
+      <div class="btn-group col-md-4">
+        <button type="button" id="all-bought-skins" class="btn btn-default">
+          All
+        </button>
+        <button type="button" id="rock-bought-skins" class="btn btn-default">
+          Rock
+        </button>
+        <button type="button" id="paper-bought-skins" class="btn btn-default">
+          Paper
+        </button>
+        <button type="button" id="scissors-bought-skins" class="btn btn-default">
+          Scissors
+        </button>
+      </div>
+      <div class="col-md-4" data-behavior="pagination">
+        <%= will_paginate @skins %>
+      </div>
+      <div class="col-md-4">
+        <button type="button" id="selected-bought-skins" class="btn btn-default">
+          Selected Skins
+        </div>
+      </div>
+    </caption>
+    <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody id="inventory_table_content">
+      <%= render 'bought_skins' %>
+    </tbody>
+  </table>
+</div>

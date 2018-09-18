@@ -1,0 +1,23 @@
+// Place all the styles related to the bought_skins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#selected-bought-skins {
+  float: right
+}
+
+#skins_inventory {
+  table {
+    caption {
+      .pagination {
+        margin: 0;
+        a {
+          padding: 4px 8px;
+        }
+      }
+    }
+    .checkbox {
+      zoom: 2;
+    }
+  }
+}
