@@ -7,8 +7,16 @@
       <td>
         <div style="float:right">
           <% if s.price > 0 %>
-            <%= link_to "Buy Skin", "#buy_skin_modal_#{s.id}", class: "btn btn-primary", id: "buy_skin_button", data: {toggle: "modal"} %>
-            <%= render 'buy_skin_modal', skin: s %>
+          <%= form_tag charges_path(skin_id: s.id) do %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-email="<%=current_user.email%>"
+                    data-description="<%=s.name.humanize %>"
+                    data-amount="<%=s.price * 100%>"
+                    data-locale="auto"
+                    data-label="Buy now!">
+            </script>
+            <% end %>
           <% end %>
         </div>
       </td>

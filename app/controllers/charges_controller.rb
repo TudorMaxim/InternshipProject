@@ -6,23 +6,24 @@ class ChargesController < ApplicationController
     @amount = @skin.price.to_i * 100
     # Get the credit card details submitted by the form
     customer = Stripe::Customer.create(
-        :email => params[:email],
+        :email => params[:stripeEmail],
         :source  => params[:stripeToken]
     )
 
     begin
+
       Stripe::Charge.create(
+          :customer => customer.id,
           :amount => @amount,
           :currency => 'usd',
-          :customer => customer.id,
           :description => "#{customer.email} bought #{@skin.name}"
       )
       flash[:notice] = "#{@skin.name} succesfully bought"
       #current_user.skins << @skin
-      redirect_to root_path
+      #redirect_to root_path
 
       rescue Stripe::CardError => e
-      flash[:error] = e.message
+      flash[:danger] = e.message
       redirect_to root_path
     end
   end

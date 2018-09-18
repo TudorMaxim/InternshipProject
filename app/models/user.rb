@@ -11,8 +11,6 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: {with: VALID_EMAIL_REGEX}
 
-  has_many :skins
-  
   has_many :notifications, foreign_key: :recipient_id
 
   has_many :messages

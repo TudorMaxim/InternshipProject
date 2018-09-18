@@ -1,4 +1,4 @@
-<%= form_tag charges_path(skin_id: skin.id), id: 'payment-form' do %>
+<%= form_tag charges_path(skin_id: skin.id), id: "payment_form_#{skin.id}" do %>
   <span class="payment-errors"></span>
   <div class="form-group">
     <%= label_tag :email %>
@@ -7,7 +7,7 @@
 
   <div class="form-group">
     <%= label_tag :card_number, "Credit Card Number" %>
-    <%= text_field_tag :card_number, nil, name: nil, data: {stripe: "number"}, class: "form-control" %>
+    <%= text_field_tag :card_number, nil, name: nil, class: "form-control", data: {stripe: "number"}  %>
   </div>
   <div class="row">
     <div class="form-group col-md-9">
