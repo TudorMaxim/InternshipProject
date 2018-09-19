@@ -60,6 +60,8 @@ class ChallengesController < ApplicationController
       @choices[@enemy] = @challenge.sender_choice
     end
 
+    @my_skin = current_user.selected_bought_skins.find_by(skin_type: @choices[@me])
+    @enemy_skin = @enemy.selected_bought_skins.find_by(skin_type: @choices[@enemy])
     respond_to do |format|
       format.html
       format.js

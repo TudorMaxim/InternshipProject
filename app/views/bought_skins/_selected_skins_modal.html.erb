@@ -1,0 +1,18 @@
+<%= link_to "See selected skins", "#selected_skins_modal", class: "btn btn-default",
+                                  id: "add_skin_button", data: {toggle: "modal"} %>
+
+<div class="modal fade" id="selected_skins_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-behavior="close_add_skin_modal">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+                <h4 class="modal-title w-100 font-weight-bold">Selected Skins</h4>
+            </div>
+            <div class="modal-body mx-3" id="select_skins_list">
+              <%= render 'selected_skins' %>
+            </div>
+        </div>
+    </div>
+</div>

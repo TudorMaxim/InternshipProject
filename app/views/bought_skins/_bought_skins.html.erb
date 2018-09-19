@@ -1,9 +1,25 @@
+<% i = 0 %>
 <% @skins.each do |s| %>
+  <% if i % 3 == 0 %>
   <tr>
-    <td> <%= image_tag s.image.url(:thumb) %> </td>
-    <td> <h3> <%= s.name.humanize %> </h3> </td>
+  <% end %>
     <td>
-      <%= check_box_tag "name", "value", s.selected == true , class: "checkbox", data: {behavior: "checkbox"} %>
+        <%= check_box_tag "name", "value", s.selected == true , class: "checkbox",
+                                data: {behavior: "checkbox", skin_id: s.id } %>
+        <%= image_tag s.image.url(:thumb) %>
+        <h3> <%= s.name.humanize %> </h3>
     </td>
+  <% i = i + 1 %>
+  <% if i % 3 == 0 && i != 0 %>
+  </tr>
+  <% end %>
+<% end %>
+
+<% if i % 3 != 0 %>
+  <% i = 3 - (i % 3) %>
+  <% while i > 0 %>
+    <td></td>
+    <% i = i - 1 %>
+  <% end %>
   </tr>
 <% end %>

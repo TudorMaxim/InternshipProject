@@ -1,24 +1,10 @@
 <div id="my_skin">
-<% if @choices[@me] == "rock" %>
-  <!-- <h2>I chose rock!</h2> -->
-  <%= image_tag("default-rock", size: "200x200", alt: "Rock") %>
-<% elsif @choices[@me] == "paper" %>
-  <!-- <h2>I chose paper!</h2> -->
-  <%= image_tag("default-paper", size: "200x200", alt: "Paper") %>
-<% elsif @choices[@me] == "scissors" %>
-  <!-- <h2>I chose scissors!</h2> -->
-  <%= image_tag("default-scissors", size: "200x200", alt: "Scissors") %>
-<% end %>
+  <% if @choices[@me] %>
+    <%= image_tag @my_skin.image.url(:medium) %>
+  <% end %>
 </div>
 <div id="enemy_skin">
-  <% if @choices[@enemy] == "rock" && @choices[@me]%>
-    <!-- <h2>They chose rock!</h2> -->
-    <%= image_tag("default-rock", size: "200x200", alt: "Rock") %>
-  <% elsif @choices[@enemy] == "paper" && @choices[@me]%>
-    <!-- <h2>They chose paper!</h2> -->
-    <%= image_tag("default-paper", size: "200x200", alt: "Paper") %>
-  <% elsif @choices[@enemy] == "scissors" && @choices[@me]%>
-    <!-- <h2>They chose scissors!</h2> -->
-    <%= image_tag("default-scissors", size: "200x200", alt: "Scissors") %>
+  <% if @choices[@enemy] && @choices[@me]%>
+    <%= image_tag @enemy_skin.image.url(:medium) %>
   <% end %>
 </div>
