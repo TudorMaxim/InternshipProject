@@ -7,7 +7,7 @@ module BoughtSkinsHelper
         if current_selected_skin
           current_selected_skin.update_attributes(selected: false)
         end
-      else
+      elsif !skin.name.include?("Default")
         skin.update_attributes(selected: false)
         default_skin = BoughtSkin.where("skin_type = ? AND name LIKE ?", skin.skin_type, "%default%").first
         default_skin.update_attributes(selected: true)

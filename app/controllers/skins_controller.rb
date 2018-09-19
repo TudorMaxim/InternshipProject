@@ -8,13 +8,7 @@ class SkinsController < ApplicationController
       redirect_to skins_path
     else
       flash[:danger] = "Invalid skin!"
-    end
-    respond_to do |format|
-      format.js
-      format.html {
-        flash[:danger] = "Invalid skin!"
-        redirect_to root_path
-       }
+      redirect_to root_path
     end
   end
 

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_114721) do
     t.integer "user_id"
     t.string "name"
     t.string "skin_type"
-    t.boolean "selected"
+    t.boolean "selected", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"

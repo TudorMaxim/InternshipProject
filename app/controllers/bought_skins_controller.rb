@@ -2,12 +2,12 @@ class BoughtSkinsController < ApplicationController
   include BoughtSkinsHelper
   def create
     @skin = Skin.find_by(id: params[:skin_id])
-    b = BoughtSkin.create(user_id: current_user.id,
+    BoughtSkin.create(user_id: current_user.id,
                       name: @skin.name,
                       skin_type: @skin.skin_type,
                       selected: false,
                       image: @skin.image)
-            
+
     redirect_to inventory_path
   end
 
