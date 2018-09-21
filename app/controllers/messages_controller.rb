@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  load_and_authorize_resource
   def create
     @conversation = Conversation.includes(:recipient).find(params[:conversation_id])
     @message = @conversation.messages.create(message_params)

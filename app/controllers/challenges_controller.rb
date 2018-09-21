@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :correct_user, only: [:show, :update]
   include ChallengesHelper

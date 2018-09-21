@@ -1,4 +1,5 @@
 class LeaderboardsController < ApplicationController
+  authorize_resource class: false
   include LeaderboardsHelper
 
   def index

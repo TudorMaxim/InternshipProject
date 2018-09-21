@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :logged_in_user, only: [:index, :edit, :update, :show]
   before_action :correct_user,   only: [:edit, :update]
 

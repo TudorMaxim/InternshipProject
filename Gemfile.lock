@@ -64,6 +64,7 @@ GEM
       rails (>= 5.0)
     builder (3.2.3)
     byebug (10.0.2)
+    cancancan (2.3.0)
     capistrano (3.11.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -292,6 +293,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 1.0.0)
   bootstrap_form (>= 4.0.0.alpha1)
   byebug
+  cancancan (~> 2.0)
   capistrano-rails
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.2)

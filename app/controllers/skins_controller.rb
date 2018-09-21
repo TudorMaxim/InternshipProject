@@ -1,4 +1,5 @@
 class SkinsController < ApplicationController
+  load_and_authorize_resource
   before_action :check_admin, only: [:create]
 
   def create

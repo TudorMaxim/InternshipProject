@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-
+  load_and_authorize_resource
   def create
     # Amount in cents
     @skin = Skin.find_by(id: params[:skin_id])

@@ -1,4 +1,5 @@
 class BoughtSkinsController < ApplicationController
+  load_and_authorize_resource
   include BoughtSkinsHelper
   def create
     @skin = Skin.find_by(id: params[:skin_id])
