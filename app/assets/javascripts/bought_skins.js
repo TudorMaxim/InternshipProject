@@ -17,6 +17,7 @@ var updateSelectedSkins = function(skin_id, checked, choice) {
 var checkboxClicked = function(choice) {
   $("[data-behavior='checkbox']").click(function(event) {
     var skin_id = $(this).data("skin-id");
+    console.log(this.checked);
     updateSelectedSkins(skin_id, this.checked, choice);
   });
 }

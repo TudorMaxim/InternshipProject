@@ -3,10 +3,10 @@
   <% if i % 3 == 0 %>
   <tr>
   <% end %>
-    <td>
+    <td id="skin_data">
         <%= check_box_tag "name", "value", s.selected == true , class: "checkbox",
                                 data: {behavior: "checkbox", skin_id: s.id } %>
-        <%= image_tag s.image.url(:thumb) %>
+        <%= image_tag s.image.url(:thumb), class: "image", data: {behavior: "check-image", skin_id: s.id, checked: s.selected == true } %>
         <h3> <%= s.name.humanize %> </h3>
     </td>
   <% i = i + 1 %>

@@ -2,7 +2,7 @@
   <tr>
     <td> <%= image_tag s.image.url(:thumb) %> </td>
     <td> <h3> <%= s.name.humanize %> </h3> </td>
-    <td> <%= s.price %> $ </td>
+    <td> $<%=s.price %></td>
     <td>
       <div style="float:right">
         <% if owned_skin(s) %>

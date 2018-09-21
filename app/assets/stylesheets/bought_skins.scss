@@ -3,15 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#skins_inventory {
-  table {
-    caption {
-      .pagination {
-        margin: 0;
-        a {
-          padding: 4px 8px;
-        }
-      }
+#skin_data {
+    .image {
+      float: left;
     }
-  }
+    h3 {
+      text-align: left;
+    }
 }
