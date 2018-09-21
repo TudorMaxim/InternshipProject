@@ -13,7 +13,10 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+<<<<<<< HEAD
   
+=======
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
@@ -62,7 +65,11 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
+<<<<<<< HEAD
   # config.active_job.queue_name_prefix = "internship_app_#{Rails.env}"
+=======
+  # config.active_job.queue_name_prefix = "rock_papers_scissors_#{Rails.env}"
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f
 
   config.action_mailer.perform_caching = false
 

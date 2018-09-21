@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+<<<<<<< HEAD
   devise_for :users
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
@@ -30,4 +31,6 @@ Rails.application.routes.draw do
   end
   mount ActionCable.server => '/cable'
 
+=======
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f
 end

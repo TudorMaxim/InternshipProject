@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
 #
 #
 
@@ -94,3 +95,5 @@ end
 # end
 #
 # Notification.destroy_all
+=======
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f

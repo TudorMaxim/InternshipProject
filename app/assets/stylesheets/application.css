@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+<<<<<<< HEAD
  *= require font-awesome
  */
 
@@ -43,3 +44,6 @@
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+=======
+ */
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f

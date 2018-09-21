@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  load_and_authorize_resource
+  skip_authorization_check
   before_action :authenticate_user!
 
   def create

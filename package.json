@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "internship_app",
+=======
+  "name": "rock_papers_scissors",
+>>>>>>> 507e1839bd0bd2bd5110eb622a62489feade8e2f
   "private": true,
   "dependencies": {}
 }
