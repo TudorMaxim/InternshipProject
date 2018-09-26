@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource class: :charge
+
   def create
     # Amount in cents
     @skin = Skin.find_by(id: params[:skin_id])
@@ -11,7 +12,6 @@ class ChargesController < ApplicationController
     )
 
     begin
-
       Stripe::Charge.create(
           :customer => customer.id,
           :amount => @amount,

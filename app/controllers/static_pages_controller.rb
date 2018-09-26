@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_authorization_check
+  authorize_resource class: :static_pages
   def home
   end
 

@@ -2,14 +2,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-      user ||= User.new # guest user (not logged in)
-      if user.admin?
-        can :manage, :all
-        can :read, :leaderboard
-      else
-        can :read, :all
-        can :read, :leaderboard
+      can [:home, :help, :about, :contact], :static_pages
+      can :index, :leaderboard
+      if user
+        can [:create, :index], BoughtSkin
+        can :manage, Challenge
+        can :create, :charge
+        can :manage, Conversation
+        can :manage, Message
+        can :manage, Friendship
+        can :manage, Notification
+        can :index, Skin
+        can [:show, :index], User
+        if user.admin?
+          can :manage, Skin
+          can :manage, User
+        end
       end
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

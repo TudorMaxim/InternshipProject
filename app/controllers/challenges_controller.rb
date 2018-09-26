@@ -35,10 +35,6 @@ class ChallengesController < ApplicationController
     redirect_to root_url
   end
 
-  def index
-    @challenges = current_user.played_games.paginate(page: params[:page])
-  end
-
   def show
     @challenge = Challenge.find_by(id: params[:id])
     notification = Notification.find_by(action: "accepted your challenge!", notifiable: @challenge)

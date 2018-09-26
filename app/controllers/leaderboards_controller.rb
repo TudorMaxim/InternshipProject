@@ -1,5 +1,5 @@
 class LeaderboardsController < ApplicationController
-  authorize_resource class: false
+  authorize_resource class: :leaderboard
   include LeaderboardsHelper
 
   def index

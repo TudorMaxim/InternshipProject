@@ -57,7 +57,7 @@ p {
 
 ul {
   float: left;
-  list-style: disc;
+  list-style:disc;
   font-size: 1.1em;
   line-height: 1.7em;
   li {
@@ -65,6 +65,20 @@ ul {
     margin-left: 15px;
     font-size: 1.1em;
     line-height:1.7em;
+
+  }
+}
+
+ul.help {
+  float: left;
+  list-style:disc;
+  font-size: 1.1em;
+  line-height: 1.7em;
+  li {
+    margin-left: 15px;
+    font-size: 1.1em;
+    line-height:1.7em;
+
   }
 }
 /* header */
