@@ -20,6 +20,8 @@ gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
+gem 'omniauth-facebook'
+gem 'koala'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

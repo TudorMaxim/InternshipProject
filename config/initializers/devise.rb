@@ -17,7 +17,16 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'maximtudor98@gmail.com'
+  config.mailer_sender = 'tudor.maxim@takeofflabs.com'
+  config.omniauth :facebook, "284462612395647", 'd547e7becc863a0b1e5700fe320f6a00',
+                  scope: 'public_profile,email',
+                  info_fields: 'email,first_name,last_name,gender,birthday,location,picture',
+                  token_params: { parse: :json },
+                  client_options: {
+                    site: 'https://graph.facebook.com/v3.0',
+                    authorize_url: "https://www.facebook.com/v3.0/dialog/oauth"
+                  }
+
   # Configure the class responsible to send e-mails.
    config.mailer = "Devise::Mailer"
   # Configure the class responsible to send e-mails.

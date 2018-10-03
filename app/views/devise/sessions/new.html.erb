@@ -21,6 +21,8 @@
 
   <div class="actions my_action col-md-4 col-md-offset-4">
     <%= f.submit "Log in", class: "btn btn-primary" %>
+    or
+    <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary" %>
   </div>
 <% end %>
 <div class="col-md-4 col-md-offset-4">

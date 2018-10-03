@@ -5,7 +5,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable, :omniauth_providers => [:facebook]
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -50,6 +51,23 @@ class User < ApplicationRecord
   has_many :accepted_received_from_challenges, -> { where challenges: { status: "accepted" } },
            through: :inverse_challenges, source: :sender
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.provider = "facebook"
+      user.password = Devise.friendly_token[0,20]
+      name = auth.info.name
+      name = name.split(" ")
+      user.first_name = name[0]
+      if name.size > 1
+        user.last_name = name[1]
+      end
+      user.avatar_file_name = auth.info.image # assuming the user model has an image
+      user.confirmed_at = Time.now
+      user.email = user.first_name + user.last_name + "@facebook.com";
+      user.save!
+   end
+ end
 
   def self.search(what)
     if what

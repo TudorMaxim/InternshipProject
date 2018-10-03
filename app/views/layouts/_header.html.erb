@@ -27,7 +27,11 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to current_user, id: "bar_item" do %>
-              <%= gravatar_for current_user, size: 25 %>
+              <% unless current_user.provider %>
+                <%= gravatar_for current_user, size: 25 %>
+              <% else %>
+                <%= image_tag current_user.avatar_file_name, class: "gravatar", size: "25" %>
+              <% end %>
               <%=current_user.first_name %>
             <% end %>
           </li>
