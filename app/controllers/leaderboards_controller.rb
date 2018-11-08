@@ -1,7 +1,6 @@
 class LeaderboardsController < ApplicationController
   authorize_resource class: :leaderboard
-  include LeaderboardsHelper
-
+  include LeaderboardsHelpers
   def index
     @best = nil
     @my_position = nil
